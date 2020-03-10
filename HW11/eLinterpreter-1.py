@@ -28,6 +28,7 @@ def runProgram(fileName, trace = False):
     grammar = parseGrammar(PATH)
     program = readInProgram(fileName)
     codeList = parseProgram(program)
+    # print(codeList)
     for code in codeList:
         if checkSyntax(code, '<statement>', grammar):
             print("Syntax error?")
@@ -44,5 +45,5 @@ def readInProgram(fileName):
     return whole
 
 fileName = "code.el"
-print(readInProgram(fileName))
-#runProgram(fileName, True)
+#print(readInProgram(fileName))
+runProgram(fileName, True)

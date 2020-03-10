@@ -112,11 +112,13 @@ def evalElBlock(block, oneBinding, bindings, depth = 0):
             # store the name to value mapping in oneBindings
             # HERE
             # keep going through the block
+            oneBinding[code[1]] = evalEl(code[2], [oneBinding] + bindings)
             return evalElBlock(block[1:], oneBinding, bindings, depth = depth)
         elif code[0] == 'def': 
             #put mapping from name to arguments, block
             # HERE
             # keep working through block
+            oneBinding[code[1]] = code[2:]
             return evalElBlock(block[1:], oneBinding, bindings, depth = depth)
         else: #found an expression, evaluate it with current bindings
             ans = evalEl(block[0], [oneBinding] + bindings, depth)
@@ -132,7 +134,11 @@ def findValue(name, bindings, depth):
     # recent first, search up the bindings seeing if this variable is in
     # one of the dictionaries
     # HERE
-    return bindings[name]
+    for dic in bindings:
+        if dic[name] != None:
+            return dic[name]
+    print("Can't find variable " + name)
+    return 0
 
 def toString(code):
     # prints the parse tree in a more readable form
