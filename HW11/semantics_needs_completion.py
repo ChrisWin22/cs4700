@@ -86,6 +86,14 @@ def simpleEqual(a, b):
 def evalElFun(funName, args, bindings, depth):
     ############ COMPLETE THIS CODE
     #Execute a user defined function
+    block = []
+    func = None
+    for dic in bindings:
+        if dic[funName] != None:
+            func = dic[funName]
+    if func == None:
+        print("Can't find function")
+        return
     # HERE
     if Trace:
         print(" "*depth + "Calling function %s" % (funName,))
@@ -94,7 +102,15 @@ def evalElFun(funName, args, bindings, depth):
     #create a new binding (dictionary) to hold local variables from parmeters, sets and defs
     oneBinding = {}
     # add the mapping from parameter names to values
-    # HERE    
+    # HERE
+    param = func[0]
+    for i in range(0, len(param)):
+        if isinstance(args[i], str):
+            oneBinding[param[i]] = findValue(args[i], bindings, depth)
+        else:
+            oneBinding[param[i]] = args[i]
+    block.append(func[1])
+
     # work through each statement in block
     # block will the from the function definition
     return evalElBlock(block, oneBinding, bindings, depth = depth +1)
