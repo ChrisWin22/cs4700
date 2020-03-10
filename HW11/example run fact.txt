@@ -1,0 +1,96 @@
+Example running this code:
+(set y 3)
+            
+(def fact (x) 
+    (if (eq x 1) 
+        x 
+        (* x (fact (- x 1)))))
+
+(+ (fact y) y)
+
+Reading C:/Users/nickf/Dropbox/Classes/CS4700 Spring 2020/eL interpreter/code.el
+Evaluating set y = 3
+|  Eval 3
+|  Ans  3 
+Create set variable binding: y = 3
+Create function binding: fact = [['x'], [['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]]]
+Eval ['+', ['fact', 'y'], 'y']
+|  Eval ['fact', 'y']
+|  |  Calling function fact
+|  |  Found Value of fact as (['x'], [['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]])
+|  |  |  Eval y
+|  |  |  Found Value of y as 3
+|  |  |  Ans  3 
+|  |  Create parameter-value binding: x = 3
+|  |  |  Eval ['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]
+|  |  |  |  Eval ['eq', 'x', 1]
+|  |  |  |  |  Eval x
+|  |  |  |  |  Found Value of x as 3
+|  |  |  |  |  Ans  3 
+|  |  |  |  |  Eval 1
+|  |  |  |  |  Ans  1 
+|  |  |  |  Ans  False 
+|  |  |  |  Eval ['*', 'x', ['fact', ['-', 'x', 1]]]
+|  |  |  |  |  Eval x
+|  |  |  |  |  Found Value of x as 3
+|  |  |  |  |  Ans  3 
+|  |  |  |  |  Eval ['fact', ['-', 'x', 1]]
+|  |  |  |  |  |  Calling function fact
+|  |  |  |  |  |  Looking for fact
+|  |  |  |  |  |  Found Value of fact as (['x'], [['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]])
+|  |  |  |  |  |  |  Eval ['-', 'x', 1]
+|  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  Found Value of x as 3
+|  |  |  |  |  |  |  |  Ans  3 
+|  |  |  |  |  |  |  |  Eval 1
+|  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  |  Create parameter-value binding: x = 2
+|  |  |  |  |  |  |  Eval ['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]
+|  |  |  |  |  |  |  |  Eval ['eq', 'x', 1]
+|  |  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  |  Found Value of x as 2
+|  |  |  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  |  |  |  |  Eval 1
+|  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  Ans  False 
+|  |  |  |  |  |  |  |  Eval ['*', 'x', ['fact', ['-', 'x', 1]]]
+|  |  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  |  Found Value of x as 2
+|  |  |  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  |  |  |  |  Eval ['fact', ['-', 'x', 1]]
+|  |  |  |  |  |  |  |  |  |  Calling function fact
+|  |  |  |  |  |  |  |  |  |  Looking for fact
+|  |  |  |  |  |  |  |  |  |  Looking for fact
+|  |  |  |  |  |  |  |  |  |  Found Value of fact as (['x'], [['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]])
+|  |  |  |  |  |  |  |  |  |  |  Eval ['-', 'x', 1]
+|  |  |  |  |  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  |  |  |  |  Found Value of x as 2
+|  |  |  |  |  |  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  |  |  |  |  |  |  |  Eval 1
+|  |  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  |  Create parameter-value binding: x = 1
+|  |  |  |  |  |  |  |  |  |  |  Eval ['if', ['eq', 'x', 1], 'x', ['*', 'x', ['fact', ['-', 'x', 1]]]]
+|  |  |  |  |  |  |  |  |  |  |  |  Eval ['eq', 'x', 1]
+|  |  |  |  |  |  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  |  |  |  |  |  Found Value of x as 1
+|  |  |  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  |  |  |  |  Eval 1
+|  |  |  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  |  |  |  Ans  True 
+|  |  |  |  |  |  |  |  |  |  |  |  Eval x
+|  |  |  |  |  |  |  |  |  |  |  |  Found Value of x as 1
+|  |  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  |  Ans  1 
+|  |  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  |  |  Ans  2 
+|  |  |  |  |  Ans  2 
+|  |  |  |  Ans  6 
+|  |  |  Ans  6 
+|  Ans  6 
+|  Eval y
+|  Found Value of y as 3
+|  Ans  3 
+Ans  9 

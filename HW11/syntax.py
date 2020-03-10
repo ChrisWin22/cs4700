@@ -44,7 +44,7 @@ def checkSyntax(code, grammarWord, grammar):
     return False
 
 def readInGrammar(PATH):
-    with open(PATH + 'eLgrammarDefinition.txt', 'r') as file:  # Use file to refer to the file object
+    with open(PATH + 'eLgrammarDefinition-3.txt', 'r') as file:  # Use file to refer to the file object
         return file.readlines()
         
 def parseGrammar(PATH):

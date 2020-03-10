@@ -5,7 +5,8 @@ from syntax import *
 from semantics_needs_completion import *
 
 import os
-PATH = "C:/Users/Woo Kei Cheung/Desktop/CSHW/cs4700/HW11/"
+#PATH = "C:/Users/Woo Kei Cheung/Desktop/CSHW/cs4700/HW11/"
+PATH = "/home/christian/Documents/CSHW/cs4700/HW11/"
 #C:\Users\nickf\Dropbox\Classes\CS4700 Spring 2020\lisp interpreter
 if not os.path.exists(PATH):
     os.makedirs(PATH)
@@ -43,5 +44,5 @@ def readInProgram(fileName):
     return whole
 
 fileName = "code.el"
-#print(readInProgram(fileName))
-runProgram(fileName, True)
+print(readInProgram(fileName))
+#runProgram(fileName, True)

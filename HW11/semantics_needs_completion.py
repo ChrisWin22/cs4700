@@ -132,7 +132,7 @@ def findValue(name, bindings, depth):
     # recent first, search up the bindings seeing if this variable is in
     # one of the dictionaries
     # HERE
-    1
+    return bindings[name]
 
 def toString(code):
     # prints the parse tree in a more readable form

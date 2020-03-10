@@ -1,0 +1,63 @@
+Trace of executing the following code:
+
+(set x 10) 
+x
+(def f (x y) 
+    (+ x y))
+(f 2 1)
+
+(set y 10) 
+(f x y)
+
+%run "C:\Users\nickf\Dropbox\Classes\CS4700 Spring 2020\eL interpreter\eLinterpreter.py"
+
+Evaluating set x = 10
+|  Eval 10
+|  Ans  10 
+Create set variable binding: x = 10
+Eval x
+Found Value of x as 10
+Ans  10 
+Create function binding: f = [['x', 'y'], [['+', 'x', 'y']]]
+Eval ['f', 2, 1]
+|  Calling function f
+|  Found Value of f as (['x', 'y'], [['+', 'x', 'y']])
+|  |  Eval 2
+|  |  Ans  2 
+|  Create parameter-value binding: x = 2
+|  |  Eval 1
+|  |  Ans  1 
+|  Create parameter-value binding: y = 1
+|  |  Eval ['+', 'x', 'y']
+|  |  |  Eval x
+|  |  |  Found Value of x as 2
+|  |  |  Ans  2 
+|  |  |  Eval y
+|  |  |  Found Value of y as 1
+|  |  |  Ans  1 
+|  |  Ans  3 
+Ans  3 
+Evaluating set y = 10
+|  Eval 10
+|  Ans  10 
+Create set variable binding: y = 10
+Eval ['f', 'x', 'y']
+|  Calling function f
+|  Found Value of f as (['x', 'y'], [['+', 'x', 'y']])
+|  |  Eval x
+|  |  Found Value of x as 10
+|  |  Ans  10 
+|  Create parameter-value binding: x = 10
+|  |  Eval y
+|  |  Found Value of y as 10
+|  |  Ans  10 
+|  Create parameter-value binding: y = 10
+|  |  Eval ['+', 'x', 'y']
+|  |  |  Eval x
+|  |  |  Found Value of x as 10
+|  |  |  Ans  10 
+|  |  |  Eval y
+|  |  |  Found Value of y as 10
+|  |  |  Ans  10 
+|  |  Ans  20 
+Ans  20 
