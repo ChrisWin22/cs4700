@@ -89,7 +89,7 @@ def evalElFun(funName, args, bindings, depth):
     block = []
     func = None
     for dic in bindings:
-        if dic[funName] != None:
+        if funName in dic:
             func = dic[funName]
     if func == None:
         print("Can't find function")
@@ -105,10 +105,11 @@ def evalElFun(funName, args, bindings, depth):
     # HERE
     param = func[0]
     for i in range(0, len(param)):
-        if isinstance(args[i], str):
-            oneBinding[param[i]] = findValue(args[i], bindings, depth)
-        else:
-            oneBinding[param[i]] = args[i]
+        # if isinstance(args[i], str):
+        #     oneBinding[param[i]] = findValue(args[i], bindings, depth)
+        # else:
+        #     oneBinding[param[i]] = args[i]
+        oneBinding[param[i]] = evalEl(args[i], [oneBinding] + bindings, depth)
     block.append(func[1])
 
     # work through each statement in block
@@ -151,7 +152,7 @@ def findValue(name, bindings, depth):
     # one of the dictionaries
     # HERE
     for dic in bindings:
-        if dic[name] != None:
+        if name in dic:
             return dic[name]
     print("Can't find variable " + name)
     return 0
